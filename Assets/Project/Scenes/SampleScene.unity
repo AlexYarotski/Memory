@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &340802246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1214261483926694783, guid: dc599c4b3fb5c8e48a8e280c61455ca6, type: 3}
+  m_PrefabInstance: {fileID: 1988487204}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96503d5706330fa48b2a43ba34eb7ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +249,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   length: 4
   width: 2
-  _cardPrefab: {fileID: 1214261483926694783, guid: dc599c4b3fb5c8e48a8e280c61455ca6, type: 3}
+  _cardPrefab: {fileID: 340802246}
+  _colors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0.90164423, g: 1, b: 0, a: 0}
+  - {r: 0.16162288, g: 1, b: 0, a: 0}
+  - {r: 0, g: 0.03529412, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0.9019608, g: 1, b: 0, a: 0}
+  - {r: 0, g: 0.03529412, b: 1, a: 0}
+  - {r: 0.16078432, g: 1, b: 0, a: 0}
 --- !u!212 &936408456
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -329,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485357695119528628, guid: dc599c4b3fb5c8e48a8e280c61455ca6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.52
+      value: -1.93
       objectReference: {fileID: 0}
     - target: {fileID: 2485357695119528628, guid: dc599c4b3fb5c8e48a8e280c61455ca6, type: 3}
       propertyPath: m_LocalPosition.y
