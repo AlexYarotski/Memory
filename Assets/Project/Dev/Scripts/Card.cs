@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    private Renderer _render = null;
+    
     public bool isSelected
     {
         get;
@@ -13,17 +15,14 @@ public class Card : MonoBehaviour
         get;
         private set;
     }
-
-     private Renderer _render = null;
-
+    
     public void Awake()
     {
         _render = GetComponent<Renderer>();
     }
 
-    public Color SetColor(Color color)
+    public void SetColor(Color color)
     {
         _render.material.color = color;
-        return color;
     }
 }
