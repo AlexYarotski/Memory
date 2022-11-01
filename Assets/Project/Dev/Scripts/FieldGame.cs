@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class FieldGame : MonoBehaviour
@@ -14,23 +13,34 @@ public class FieldGame : MonoBehaviour
 
     [SerializeField]
     private Color[] _colors = null;
-
+    
     public void Awake()
     {
         Card[,] arrayCard = new Card[length, width];
 
-        int x = 0;
-
-        for (int i = 0; i < length; i++)
+        if ((length * width) % 2 == 0 && _colors.Length == (length * width) / 2)
         {
-            for (int j = 0; j < width; j++)
+            int x = 0;
+
+            for (int i = 0; i < length; i++)
             {
-                Card createdCard = Instantiate(_cardPrefab, transform);
-                createdCard.transform.position = new Vector2(i - 3f + i, j + 2f - (j * 3));
-                arrayCard[i, j] = createdCard;
-                createdCard.SetColor(_colors[x]);
-                x++;
-            }
+                for (int j = 0; j < width; j++)
+                {
+                    Card createdCard = Instantiate(_cardPrefab, transform);
+                    createdCard.transform.position = new Vector2(i - 3f + i,
+                        j + 2f - (j * 3));
+                    arrayCard[i, j] = createdCard;
+                    createdCard.SetColor(_colors[x++]);
+                    if (x == _colors.Length)
+                    {
+                        x = 0;
+                    }
+                }
+            }    
+        }
+        else
+        {
+            Debug.Log("The number of cards must be even");
         }
     }
 }

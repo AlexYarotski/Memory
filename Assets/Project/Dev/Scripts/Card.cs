@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(BoxCollider))]
 public class Card : MonoBehaviour
 {
     private Renderer _render = null;
@@ -23,6 +25,16 @@ public class Card : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        _render.material.color = color;
+        this.color = color;
+    }
+
+    public void SetColorMaterial()
+    {
+        _render.material.color = this.color;
+    }
+
+    public void SetSelected()
+    {
+        this.isSelected = true;
     }
 }
