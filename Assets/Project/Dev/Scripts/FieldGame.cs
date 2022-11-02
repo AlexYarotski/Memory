@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FieldGame : MonoBehaviour
@@ -18,7 +19,12 @@ public class FieldGame : MonoBehaviour
     {
         Card[,] arrayCard = new Card[length, width];
 
-        if ((length * width) % 2 == 0 && _colors.Length == (length * width) / 2)
+        if ((length * width) % 2 != 0 || _colors.Length != (length * width) / 2)
+        {
+            Debug.Log("The number of cards must be even");
+            return;    
+        }
+        else
         {
             int x = 0;
 
@@ -31,16 +37,13 @@ public class FieldGame : MonoBehaviour
                         j + 2f - (j * 3));
                     arrayCard[i, j] = createdCard;
                     createdCard.SetColor(_colors[x++]);
+                    
                     if (x == _colors.Length)
                     {
                         x = 0;
                     }
                 }
-            }    
-        }
-        else
-        {
-            Debug.Log("The number of cards must be even");
+            }
         }
     }
 }

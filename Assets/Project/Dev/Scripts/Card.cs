@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour, IPointerClickHandler
 {
     private Renderer _render = null;
     
@@ -30,11 +30,18 @@ public class Card : MonoBehaviour
 
     public void SetColorMaterial()
     {
-        _render.material.color = this.color;
+        if (this.isSelected = true)
+        {
+            _render.material.color = this.color;    
+        }
     }
-
-    public void SetSelected()
+    
+    public void OnPointerClick(PointerEventData eventData)
     {
-        this.isSelected = true;
+        if (eventData.pointerId == -1)
+        {
+            this.isSelected = true;
+            SetColorMaterial();
+        }
     }
 }
