@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="95625170-d9ef-4a3e-ab16-c210cdf9059a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Memory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Memory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Dev/Scripts/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Dev/Scripts/Card.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Dev/Scripts/FieldGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Dev/Scripts/FieldGame.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +116,7 @@
       <workItem from="1667674524225" duration="16000" />
       <workItem from="1667736672443" duration="7922000" />
       <workItem from="1667751893845" duration="81000" />
-      <workItem from="1667752012966" duration="4737000" />
+      <workItem from="1667752012966" duration="5206000" />
     </task>
     <servers />
   </component>

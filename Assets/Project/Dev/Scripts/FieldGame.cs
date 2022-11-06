@@ -84,7 +84,7 @@ public class FieldGame : MonoBehaviour
 
      private void CheckingForDifferentColors()
      {
-         if (_firstCard.color != _secondCard.color)
+         if (_firstCard != null)
          {
              ResetSelected();
              SetNull();
