@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -27,15 +26,14 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void SetColorMaterial()
     {
-        
-            _render.material.color = color;
+        _render.material.color = color;
     }
-    
+
     public void SetColorMaterial(Color color)
     {
-            _render.material.color = color;
+        _render.material.color = color;
     }
-    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.pointerId == -1)
