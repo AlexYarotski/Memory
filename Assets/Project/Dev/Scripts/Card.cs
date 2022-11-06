@@ -1,17 +1,14 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Card : MonoBehaviour, IPointerClickHandler
 {
+    public static event Action<Card> Clicked = delegate { };
     private Renderer _render = null;
     
-    public bool isSelected
-    {
-        get;
-        private set;
-    }
-
     public Color color
     {
         get;
@@ -30,18 +27,21 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void SetColorMaterial()
     {
-        if (this.isSelected = true)
-        {
-            _render.material.color = this.color;    
-        }
+        
+            _render.material.color = color;
+    }
+    
+    public void SetColorMaterial(Color color)
+    {
+            _render.material.color = color;
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.pointerId == -1)
         {
-            this.isSelected = true;
             SetColorMaterial();
+            Clicked(this);
         }
     }
 }
