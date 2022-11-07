@@ -17,11 +17,21 @@ public class FieldGame : MonoBehaviour
 
     private Card _firstCard = null;
     private Card _secondCard = null;
+    private Coroutine _checkColorsCor = null;
+    private int  pairsOpen = 0;
+    
+    private void OnEnable()
+    {
+        Card.Clicked += Card_Clicked;
+    }
+    
+    private void OnDisable()
+    {
+        Card.Clicked -= Card_Clicked;
+    }
     
     public void Awake()
     {
-        Card[,] arrayCard = new Card[length, width];
-
         if ((length * width) % 2 != 0 || _colors.Length != (length * width) / 2)
         {
             Debug.Log("The number of cards must be even");
@@ -29,6 +39,12 @@ public class FieldGame : MonoBehaviour
             return;
         }
 
+        CreateField();
+    }
+    
+    private void CreateField()
+    {
+        Card[,] arrayCard = new Card[length, width];
         int x = 0;
 
         for (int i = 0; i < length; i++)
@@ -37,7 +53,7 @@ public class FieldGame : MonoBehaviour
             {
                 Card createdCard = Instantiate(_cardPrefab, transform);
                 createdCard.transform.position = new Vector2(i - 3f + i,
-                    j + 2f - (j * 3));
+                    j + 1f - (j * 3));
                 arrayCard[i, j] = createdCard;
                 createdCard.SetColor(_colors[x++]);
 
@@ -48,36 +64,34 @@ public class FieldGame : MonoBehaviour
             }
         }
     }
-
-    private void OnEnable()
-    {
-        Card.Clicked += Card_Clicked;
-    }
     
-    private void OnDisable()
-    {
-        Card.Clicked -= Card_Clicked;
-    }
-
     private void Card_Clicked(Card clickedCard)
     {
         if (_firstCard == null)
         {
             _firstCard = clickedCard;
-
+            
             return;
         }
 
         _secondCard = clickedCard;
-        StartCoroutine(CheckColorsCor());
+        
+        if(_checkColorsCor == null)
+        {
+            _checkColorsCor = StartCoroutine(CheckColorsCor());
+            
+            return;
+        }
+         
+        _checkColorsCor = StartCoroutine(CheckColorsCor());
     }
     
      private void CheckingForSameColors()
     {
         if (_firstCard.color == _secondCard.color)
         {
+            ScoreToVictory();
             SetNull();
-            Debug.Log("Same colors!!!");
         }
     }
 
@@ -87,7 +101,7 @@ public class FieldGame : MonoBehaviour
          {
              ResetSelected();
              SetNull();
-             Debug.Log("Different colors!!!");
+             Debug.Log("Underdog");
          }
      }
      
@@ -108,5 +122,17 @@ public class FieldGame : MonoBehaviour
         CheckingForSameColors();
         yield return new WaitForSeconds(0.3f);
         CheckingForDifferentColors();
+    }
+
+    private void ScoreToVictory() 
+    {
+        pairsOpen++;
+        if (pairsOpen == _colors.Length)
+        {
+            Debug.Log("You Winner");
+            
+            return;
+        }
+        Debug.Log($"Just a little bit left... \r\n {_colors.Length - pairsOpen} pairs");
     }
 }

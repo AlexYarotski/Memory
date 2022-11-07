@@ -38,6 +38,11 @@ public class Card : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.pointerId == -1)
         {
+            if (color == _render.material.color)
+            {
+                return;;
+            }
+            
             SetColorMaterial();
             Clicked(this);
         }
