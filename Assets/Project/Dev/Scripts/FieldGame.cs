@@ -72,6 +72,8 @@ public class FieldGame : MonoBehaviour
             return;
         }
         
+        clickedCard.SetColorMaterial();
+        
         if (_firstCard == null)
         {
             _firstCard = clickedCard;
@@ -80,27 +82,24 @@ public class FieldGame : MonoBehaviour
         }
 
         _secondCard = clickedCard;
+        
         _checkColorsCor = StartCoroutine(CheckColorsCor());
     }
     
-     private void CheckingForSameColors()
+    private void CheckColors()
     {
         if (_firstCard.color == _secondCard.color)
         {
             ScoreToVictory();
-            SetNull();
         }
+        else
+        {
+            ResetSelected();
+        }
+        
+        SetNull();
     }
-
-     private void CheckingForDifferentColors()
-     {
-         if (_firstCard != null)
-         {
-             ResetSelected();
-             SetNull();
-             Debug.Log("Underdog");
-         }
-     }
+    
      
     private void SetNull()
     {
@@ -116,9 +115,10 @@ public class FieldGame : MonoBehaviour
 
     IEnumerator CheckColorsCor()
     {
-        CheckingForSameColors();
         yield return new WaitForSeconds(0.3f);
-        CheckingForDifferentColors();
+        
+        CheckColors();
+        
         _checkColorsCor = null;
     }
 

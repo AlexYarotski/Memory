@@ -40,10 +40,9 @@ public class Card : MonoBehaviour, IPointerClickHandler
         {
             if (color == _render.material.color)
             {
-                return;;
+                return;
             }
             
-            SetColorMaterial();
             Clicked(this);
         }
     }
