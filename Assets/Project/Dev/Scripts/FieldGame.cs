@@ -67,6 +67,11 @@ public class FieldGame : MonoBehaviour
     
     private void Card_Clicked(Card clickedCard)
     {
+        if(_checkColorsCor != null)
+        {
+            return;
+        }
+        
         if (_firstCard == null)
         {
             _firstCard = clickedCard;
@@ -75,14 +80,6 @@ public class FieldGame : MonoBehaviour
         }
 
         _secondCard = clickedCard;
-        
-        if(_checkColorsCor == null)
-        {
-            _checkColorsCor = StartCoroutine(CheckColorsCor());
-            
-            return;
-        }
-         
         _checkColorsCor = StartCoroutine(CheckColorsCor());
     }
     
@@ -122,6 +119,7 @@ public class FieldGame : MonoBehaviour
         CheckingForSameColors();
         yield return new WaitForSeconds(0.3f);
         CheckingForDifferentColors();
+        _checkColorsCor = null;
     }
 
     private void ScoreToVictory() 
