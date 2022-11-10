@@ -41,7 +41,7 @@ public class FieldGame : MonoBehaviour
 
         CreateField();
     }
-    
+
     private void CreateField()
     {
         Card[,] arrayCard = new Card[length, width];
@@ -71,7 +71,7 @@ public class FieldGame : MonoBehaviour
         {
             return;
         }
-        
+
         clickedCard.SetColorMaterial();
         
         if (_firstCard == null)
@@ -88,7 +88,7 @@ public class FieldGame : MonoBehaviour
     
     private void CheckColors()
     {
-        if (_firstCard.color == _secondCard.color)
+        if (_firstCard.Color == _secondCard.Color)
         {
             ScoreToVictory();
         }
@@ -122,8 +122,10 @@ public class FieldGame : MonoBehaviour
         _checkColorsCor = null;
     }
 
-    private void ScoreToVictory() 
+    private void ScoreToVictory()
     {
+        pairsOpen = Mathf.Clamp(pairsOpen + 1, 0, 10);
+        
         pairsOpen++;
         if (pairsOpen == _colors.Length)
         {
@@ -131,6 +133,7 @@ public class FieldGame : MonoBehaviour
             
             return;
         }
+        
         Debug.Log($"Just a little bit left... \r\n {_colors.Length - pairsOpen} pairs");
     }
 }

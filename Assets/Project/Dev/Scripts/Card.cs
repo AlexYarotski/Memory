@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour, IPointerClickHandler
 {
     public static event Action<Card> Clicked = delegate { };
+    
     private Renderer _render = null;
     
-    public Color color
+    public Color Color
     {
         get;
         private set;
@@ -21,12 +22,17 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void SetColor(Color color)
     {
-        this.color = color;
+        Color = color;
+    }
+
+    public void SetPosition(Vector3 newPosition)
+    {
+        transform.position = newPosition;
     }
 
     public void SetColorMaterial()
     {
-        _render.material.color = color;
+        _render.material.color = Color;
     }
 
     public void SetColorMaterial(Color color)
@@ -38,7 +44,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.pointerId == -1)
         {
-            if (color == _render.material.color)
+            if (Color == _render.material.color)
             {
                 return;
             }
