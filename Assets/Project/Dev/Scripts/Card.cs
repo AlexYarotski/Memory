@@ -8,6 +8,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
     public static event Action<Card> Clicked = delegate { };
     
     private Renderer _render = null;
+    private static int _pressing = 0;
     
     public Color Color
     {
@@ -50,6 +51,9 @@ public class Card : MonoBehaviour, IPointerClickHandler
             }
             
             Clicked(this);
+            _pressing++;
         }
     }
+
+    public int GetPressing() => _pressing;
 }

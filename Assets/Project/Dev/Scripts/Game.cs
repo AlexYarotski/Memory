@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -115,7 +113,8 @@ namespace Project
             {
                 for (int j = 0; j < _countPerGroup; j++)
                 {
-                    points[iteration] = startPosition + new Vector3(_offsetX * i, _offsetY * j, 0);
+                    points[iteration] = startPosition + new Vector3(_offsetX * i,
+                        _offsetY * j, 0);
 
                     iteration++;
                 }
@@ -127,7 +126,6 @@ namespace Project
         private void Card_Clicked(Card card)
         {
             ClickedCards.Enqueue(card);
-
             card.SetColorMaterial();
             
             if (ClickedCards.Count == _countPerGroup)
